@@ -1,0 +1,25 @@
+﻿@model TodoListModel
+@{
+    ViewData["Title"] = "Home Page";
+    //List<string> all = Model.ToList();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Todo List</h1>
+    <form asp-action="IndexNew" method="post">
+        @if(Model.todoItems != null){
+          for(int i = 0; i < Model.todoItems.Count; i++){
+              <div class="form-group">
+                <input asp-for="todoItems[i]" class="form-control" required/>
+             </div>
+            }
+        }
+    
+        <div class="form-group">
+            <label asp-for="newTodo"></label>
+            <input asp-for="newTodo" class="form-control" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
